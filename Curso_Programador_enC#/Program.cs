@@ -19,6 +19,7 @@ namespace Appusuario
     }
 } 
 
+// comentario prueba, este comentario se hizo desde la rama jdavid
 
 
 /* // USO DE OBJETOS
