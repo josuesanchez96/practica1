@@ -1,4 +1,4 @@
-﻿  // CREACIÓN DE CLASE
+﻿ /* // CREACIÓN DE CLASE
 namespace Appusuario
 {
     class Program
@@ -116,7 +116,7 @@ namespace AppCampoPropiedadConstructor
 }
 */
 
-/* // CLASES ESTÁTICAS
+ // CLASES ESTÁTICAS
 
 namespace AppEstatico2
 {
@@ -147,7 +147,7 @@ namespace AppEstatico2
             ++contadorEmpleado;
         }
     }
-}*/
+}
 
 /*// HERENCIA DE CLASES
 namespace AppHerencia
