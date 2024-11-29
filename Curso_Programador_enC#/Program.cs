@@ -1,4 +1,4 @@
-﻿ /* // CREACIÓN DE CLASE
+﻿  // CREACIÓN DE CLASE
 namespace Appusuario
 {
     class Program
@@ -18,7 +18,7 @@ namespace Appusuario
         }
     }
 } 
-*/
+
 
 
 /* // USO DE OBJETOS
