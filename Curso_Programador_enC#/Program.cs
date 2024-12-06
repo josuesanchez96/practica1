@@ -5,7 +5,7 @@
 /* // plantilla 
 namespace ejercicio
 {
-    class MainClass
+    class Program
     {
         public static void Main(string[] args)
         {            
@@ -354,36 +354,50 @@ namespace ejercicio_funciones_3
 //******************************* LECCIÓN 4 ******************************//
 //************************************************************************//
 
-//INTERFACES
-/* //Ejemplo de como definir e implementar una interfaz (LE FALTA ALGO, NO FUNCIONA)
-public interface IConducible
+// ♦♦♦ 01 ♦♦♦ INTERFACES
+//Ejemplo de como definir e implementar una interfaz
+/*
+namespace ejercicio
 {
-    string Matricula { get; set; }
-
-    //Métodos
-    void Conducir();
-    void Frenar();
-}
-
-public class Coche : IConducible
-{
-    // Implementación de propiedades
-    public string Matricula { get; set; }
-
-    // Implementación de métodos
-    public void Conducir()
+    class Program
     {
-        Console.WriteLine("El coche está en marcha.");
+        public static void Main(string[] args)
+        {
+            Coche coche = new Coche();
+            coche.Conducir();
+            coche.Frenar();
+        }
+    }
+    public interface IConducible
+    {
+        string Matricula { get; set; }
+
+        //Métodos
+        void Conducir();
+        void Frenar();
     }
 
-    public void Frenar()
+    public class Coche : IConducible
     {
-        Console.WriteLine("El coche se ha detenido");
+        // Implementación de propiedades
+        public string Matricula { get; set; }
+
+        // Implementación de métodos
+        public void Conducir()
+        {
+            Console.WriteLine("El coche está en marcha.");
+        }
+
+        public void Frenar()
+        {
+            Console.WriteLine("El coche se ha detenido");
+        }
     }
 }
+
 */
 
-namespace ejercicio_funciones_1
+/*namespace ejercicio
 {
     class Program
     {
@@ -426,5 +440,265 @@ namespace ejercicio_funciones_1
         public void Apuntar() { Console.WriteLine("Tanque apuntando"); }
         public void Disparar() { Console.WriteLine("Tanque disparando"); }
     }
-}
+}*/
 
+
+
+// ♦♦♦ 02 ♦♦♦ IMPLEMENTACIÓN EXPLÍCITA DE INTERFACES
+// Ejemplo Implementación explícita de Interfaces
+// La clase Multifuncional implementa dos interfaces, donde ambas interfaces declaran un método
+// con el mismo nombre. 
+/*
+namespace ejercicio
+{
+    
+    public interface IImprimible
+    {
+        void Imprimir();
+    }
+    public interface IEscaneable
+    {
+        void Imprimir();
+    }
+    public class Multifuncional : IImprimible, IEscaneable
+    {
+        void IImprimible.Imprimir()
+        {
+            Console.WriteLine("Imprimiendo...");
+        }
+        void IEscaneable.Imprimir()
+        {
+            Console.WriteLine("Escaneando...");
+        }
+     
+    }
+
+    // Uso
+    class MainClass
+    {        
+        public static void Main(string[] args)
+        {
+            IImprimible impresora = new Multifuncional();
+            impresora.Imprimir(); // Salida: Imprimiendo...
+
+            IEscaneable escaner = new Multifuncional();
+            escaner.Imprimir(); // Salida: Escaneando...
+        }
+    }
+} */
+
+
+
+// EJERCICIOS PRACTICOS DE INTERFACES
+// Representación de un dispositivo electrónico
+/* using System.Timers;
+
+namespace ejercicio
+{
+    public interface IEncendible
+    {
+        //Métodos
+        void Encender();
+        void Apagar();
+        void Reiniciar();
+    }
+    public class Telefono : IEncendible
+    {
+        //Implementación de métodos
+        //Esta clase debe implementar todos los metodos de la Interfaz
+        public void Encender()
+        {
+            Console.WriteLine("El teléfono se está encendiendo.");
+        }
+        public void Apagar()
+        {
+            Console.WriteLine("El teléfono se está apagando.");
+        }
+        public void Reiniciar()
+        {
+            Console.WriteLine("El teléfono se esté reiniciando.");
+        }
+    }
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            IEncendible dispositivo = new Telefono();
+            dispositivo.Encender();
+            dispositivo.Apagar();
+            dispositivo.Reiniciar();
+        }
+    }    
+} */
+
+
+
+//Comportamiento de comunicación
+/*
+namespace ejercicio
+{
+    public interface IEncendible
+    {
+        //Métodos
+        void Encender();
+        void Apagar();
+        void Reiniciar();
+    }
+    public interface IComunicador
+    {
+        //Métodos
+        void Llamar(string numero);
+        void EnviarMensaje(string numero, string mensaje);
+    }
+    public class Telefono : IComunicador, IEncendible
+    {
+        //Implementación de métodos IEncendible
+        public void Encender()
+        {
+            Console.WriteLine("El teléfono se está encendiendo.");
+        }
+        public void Apagar()
+        {
+            Console.WriteLine("El teléfono se está apagando.");
+        }
+        public void Reiniciar()
+        {
+            Console.WriteLine("El teléfono se está reiniciando.");
+        }
+        //Implementación de métodos IComunicador
+        public void Llamar(string numero)
+        {
+            Console.WriteLine($"Llamando al número {numero}.");
+        }
+        public void EnviarMensaje(string numero, string mensaje)
+        {            
+            Console.WriteLine($"Enviando mensaje al número {numero}: {mensaje}");            
+        }
+    }
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Telefono telefono = new Telefono();
+            telefono.Encender();
+            telefono.Apagar();
+            telefono.Reiniciar();
+            string numero = "42214924";
+            string mensaje = "Hola, como estas?...";
+            telefono.Llamar(numero);
+            telefono.EnviarMensaje(numero, mensaje);
+
+        }
+    }
+} 
+*/
+
+
+
+
+/* //Comportamiento de pagos
+namespace ejercicio
+{
+    public interface IPagos
+    {
+        //Métodos
+        void ProcesarPago(decimal monto);
+        void ReembolsarPago(decimal monto);
+    }
+    public class PagoElectronico : IPagos
+    {
+        //Implementación de métodos
+        public void ProcesarPago(decimal monto)
+        {
+            Console.WriteLine($"Procesando pago de {monto}.");
+        }
+        public void ReembolsarPago(decimal monto)
+        {
+            Console.WriteLine($"Reembolsando pago de {monto}.");
+        }
+    }
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            PagoElectronico pago = new PagoElectronico();
+            pago.ProcesarPago(1000);
+            pago.ReembolsarPago(1000);
+        }
+    }
+}
+*/
+
+
+
+// ♦♦♦ 03 ♦♦♦ COLECCIONES
+
+/* // LISTA
+namespace ejercicio
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            var orden = new List<string> { "primero", "segundo", "tercero", "cuarto" };
+            foreach (var estado in orden)
+            {
+                Console.Write(estado + " ");
+            }
+            Console.WriteLine($"\n{orden[0]}");
+
+            //agregar o eliminar elementos en las listas
+            orden.Add("quinto");
+            orden.Add("sexto");
+            orden.Remove("primero");
+
+            Console.WriteLine("Lista con dos elementos agregados y un elemento eliminado: ");
+            foreach (var estado in orden)
+            {
+                Console.Write(estado + " ");
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
+*/
+
+ // DICCIONARIO 
+namespace ejercicio
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Dictionary<int, Elemento> elementos = new Dictionary<int, Elemento>
+            {
+                {123, new Elemento("K","Potasio",19)},
+                {124, new Elemento("Ca","Calcio",20)},
+                {126, new Elemento("Sc","Escandio",21)},
+                {127, new Elemento("Ti","Titanio",22)}
+            };
+
+            foreach(KeyValuePair<int, Elemento> kvp in elementos)
+            {
+                Elemento ElElemento = kvp.Value;
+
+                Console.WriteLine("clave: "+kvp.Key);
+                Console.WriteLine("valores: " + ElElemento.Simbolo + " " + ElElemento.Nombre + " " + ElElemento.NumeroAtomico);
+            }
+            Console.ReadKey();
+        }
+    }
+    public class Elemento
+    {
+        public string Simbolo { get; set; }
+        public string Nombre { get; set; }
+        public int NumeroAtomico { get; set; }
+        public Elemento(string simbolo, string nombre, int numeroatomico)
+        {
+            Simbolo = simbolo;
+            Nombre = nombre;
+            NumeroAtomico = numeroatomico;
+        }
+    }
+}
